@@ -6,7 +6,6 @@
 #include "func.h"
 #include "gram.tab.h"
 
-/* Used for variable stores. Defined in mem.h */
 extern double variable_values[100];
 extern int variable_set[100];
 
@@ -67,7 +66,7 @@ calculation:
 expr:
 			SUB expr					{ $$ = -$2; }
     | NUMBER            { $$ = $1; }
-		| VARIABLE					{ $$ = variable_values[$1]; }
+		| VARIABLE					{if(variable_values[$1]==-99999){yyerror("Variable is not initialized"); exit(1);} else $$ = variable_values[$1]; }
 		| function
 		| expr DIV expr     { if ($3 == 0) { yyerror("Cannot divide by zero"); exit(1); } else $$ = $1 / $3; }
 		| expr MUL expr     { $$ = $1 * $3; }
@@ -103,31 +102,14 @@ assignment:
 
 int main(int argc, char **argv)
 {
-	char c[256];
-	printf("Command line or File? (Enter C or F): ");
-	scanf("%s", c);
-	
-	if (strcmp(c, "f")==0 || strcmp(c, "F")==0) {
-		// File input
-		printf("Ok, please tell me the name of the file: ");
-		scanf("%s", c);
-
-		yyin = fopen(c, "r");
-		if (!yyin) {
-			printf("ERROR: Couldn't open file %s\n", c);
-			exit(-1);
+		int i=0;
+		for(i=0;i<100;i++){
+			variable_values[i] = -99999;
 		}
-		yyparse();
-		
-		printf("All done with %s\n", c);
-	}
-	else {
-		// Command line
-		printf("Ok, command line it is!\n");
-		
+		printf("Enter your Input: \n");	
 		yyin = stdin;
 		yyparse();
-	}
+	
 }
 
 void yyerror(const char *message)

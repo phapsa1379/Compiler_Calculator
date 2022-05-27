@@ -67,7 +67,7 @@ typedef union YYSTYPE
 {
 
 /* Line 1676 of yacc.c  */
-#line 21 "gram.y"
+#line 20 "gram.y"
 
 	int index;
 	double num;
