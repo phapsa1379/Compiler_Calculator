@@ -24,6 +24,7 @@
 ("cos")|("COS")												{ return COS; }
 ("sin")|("SIN")												{ return SIN; }
 ("tan")|("TAN")												{ return TAN; }
+("cot")|("COT")												{ return COT; }
 ("ln")|("LN")													{ return LN; }
 ("var")|("VAR")												{ return VAR_KEYWORD; }
 [a-zA-Z0-9]+  												{ yylval.index = add_variable(yytext); return VARIABLE; }

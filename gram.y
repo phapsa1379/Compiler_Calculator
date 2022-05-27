@@ -30,7 +30,7 @@ extern FILE* yyin;
 %token<num> PI
 %token<num> POW MOD
 %token<num> LN 
-%token<num> COS SIN TAN 
+%token<num> COS SIN TAN COT
 %token<num> VAR_KEYWORD 
 %token<index> VARIABLE
 %token<num> EOL
@@ -97,6 +97,7 @@ trig_function:
 			COS expr  			  { $$ = cos($2); }
 		| SIN expr 					{ $$ = sin($2); }
 		| TAN expr 					{ $$ = tan($2); }
+		| COT expr 					{ $$ = 1 / tan($2); }
 		;
 	
 log_function:
