@@ -29,7 +29,6 @@ extern FILE* yyin;
 %token<num> POW MOD
 %token<num> LN EXP
 %token<num> COS SIN TAN COT
-%token<num> VAR_KEYWORD 
 %token<index> VARIABLE
 %token<num> EOL
 %type<num> program_input
@@ -100,7 +99,7 @@ log_function:
 			
 		
 assignment: 
-		VAR_KEYWORD VARIABLE EQUALS calculation { $$ = set_variable($2, $4); }
+		 VARIABLE EQUALS calculation { $$ = set_variable($1, $3); }
 		;
 %%
 
@@ -133,7 +132,6 @@ int main(int argc, char **argv)
 	}
 }
 
-/* Display error messages */
 void yyerror(const char *message)
 {
 	printf("ERROR: %s\n", message);
