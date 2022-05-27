@@ -20,7 +20,6 @@
 "="																		{ return EQUALS; }
 "("																		{ return L_BRACKET; }
 ")"																		{ return R_BRACKET; }
-("pi")|("PI")													{ return PI; }
 ("cos")|("COS")												{ return COS; }
 ("sin")|("SIN")												{ return SIN; }
 ("tan")|("TAN")												{ return TAN; }

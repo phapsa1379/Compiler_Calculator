@@ -47,17 +47,16 @@
      ADD = 263,
      SUB = 264,
      EQUALS = 265,
-     PI = 266,
-     POW = 267,
-     MOD = 268,
-     LN = 269,
-     COS = 270,
-     SIN = 271,
-     TAN = 272,
-     COT = 273,
-     VAR_KEYWORD = 274,
-     VARIABLE = 275,
-     EOL = 276
+     POW = 266,
+     MOD = 267,
+     LN = 268,
+     COS = 269,
+     SIN = 270,
+     TAN = 271,
+     COT = 272,
+     VAR_KEYWORD = 273,
+     VARIABLE = 274,
+     EOL = 275
    };
 #endif
 
@@ -68,7 +67,7 @@ typedef union YYSTYPE
 {
 
 /* Line 1676 of yacc.c  */
-#line 22 "gram.y"
+#line 21 "gram.y"
 
 	int index;
 	double num;
@@ -76,7 +75,7 @@ typedef union YYSTYPE
 
 
 /* Line 1676 of yacc.c  */
-#line 80 "gram.tab.h"
+#line 79 "gram.tab.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */

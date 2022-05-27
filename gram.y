@@ -10,10 +10,9 @@
 extern double variable_values[100];
 extern int variable_set[100];
 
-/* Flex functions */
 extern int yylex(void);
 extern void yyterminate();
-void yyerror(const char *s);
+void yyerror(const char *message);
 extern FILE* yyin;
 %}
 
@@ -27,7 +26,6 @@ extern FILE* yyin;
 %token<num> NUMBER
 %token<num> L_BRACKET R_BRACKET
 %token<num> DIV MUL ADD SUB EQUALS
-%token<num> PI
 %token<num> POW MOD
 %token<num> LN 
 %token<num> COS SIN TAN COT
@@ -37,7 +35,6 @@ extern FILE* yyin;
 %type<num> program_input
 %type<num> line
 %type<num> calculation
-%type<num> constant
 %type<num> expr
 %type<num> function
 %type<num> log_function
@@ -70,14 +67,10 @@ calculation:
 		| assignment
 		;
 		
-constant: PI { $$ = 3.142; }
-		;
-		
 expr:
 			SUB expr					{ $$ = -$2; }
     | NUMBER            { $$ = $1; }
 		| VARIABLE					{ $$ = variable_values[$1]; }
-		| constant	
 		| function
 		| expr DIV expr     { if ($3 == 0) { yyerror("Cannot divide by zero"); exit(1); } else $$ = $1 / $3; }
 		| expr MUL expr     { $$ = $1 * $3; }
@@ -110,7 +103,6 @@ assignment:
 		;
 %%
 
-/* Entry point */
 int main(int argc, char **argv)
 {
 	char c[256];
@@ -141,7 +133,7 @@ int main(int argc, char **argv)
 }
 
 /* Display error messages */
-void yyerror(const char *s)
+void yyerror(const char *message)
 {
-	printf("ERROR: %s\n", s);
+	printf("ERROR: %s\n", message);
 }
