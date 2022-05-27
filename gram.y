@@ -27,7 +27,7 @@ extern FILE* yyin;
 %token<num> L_BRACKET R_BRACKET
 %token<num> DIV MUL ADD SUB EQUALS
 %token<num> POW MOD
-%token<num> LN 
+%token<num> LN EXP
 %token<num> COS SIN TAN COT
 %token<num> VAR_KEYWORD 
 %token<index> VARIABLE
@@ -95,6 +95,7 @@ trig_function:
 	
 log_function:
 			LN expr 				{ $$ = log($2); }
+			|EXP expr        {$$ = exp($2); }
 		;
 			
 		
