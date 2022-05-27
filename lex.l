@@ -8,15 +8,6 @@
 
 %option noyywrap
 
-	[ \t] -- Match space or tab
-	
-	[0-9]+(\.[0-9]+)?  -- Match any combination of numbers. Includes decimals. 
-	
-	[a-zA-Z0-9]+ -- Match any combination of letters (lower and upper case) and numbers.
-	
-	. -- Match any remaining character.
-*/
-
 %%
 [ \t]
 [0-9]+(\.[0-9]+)?          					{ yylval.num = atof(yytext); return NUMBER; }
@@ -29,7 +20,6 @@
 "="																		{ return EQUALS; }
 "("																		{ return L_BRACKET; }
 ")"																		{ return R_BRACKET; }
-"!"                         					{ return FACTORIAL; }
 ("pi")|("PI")													{ return PI; }
 ("mod")|("MOD")												{ return MOD; }
 ("pow")|("POW")												{	return POW; }

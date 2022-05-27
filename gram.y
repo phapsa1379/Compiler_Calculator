@@ -17,15 +17,8 @@ void yyerror(const char *s);
 extern FILE* yyin;
 %}
 
-/* Bison declarations */
 
-/* 
-If you have used %union to specify a variety of data types, then you must declare a choice among these 
-types for each terminal or nonterminal symbol that can have a semantic value. 
 
-Then each time you use $$ or $n, its data type is determined by which symbol it refers to in the rule. 
-(http://dinosaur.compilertools.net/bison/bison_6.html)
-*/
 %union {
 	int index;
 	double num;
@@ -35,7 +28,7 @@ Then each time you use $$ or $n, its data type is determined by which symbol it 
 %token<num> L_BRACKET R_BRACKET
 %token<num> DIV MUL ADD SUB EQUALS
 %token<num> PI
-%token<num> POW SQRT FACTORIAL MOD
+%token<num> POW SQRT MOD
 %token<num> LOG2 LOG10
 %token<num> FLOOR CEIL ABS
 %token<num> GBP_TO_USD USD_TO_GBP 
@@ -69,38 +62,7 @@ Then each time you use $$ or $n, its data type is determined by which symbol it 
 %left POW SQRT 
 %left L_BRACKET R_BRACKET
 
-/* Grammar rules */
-/*Symbols in Bison grammars represent the grammatical classifications of the language.
 
-A terminal symbol (also known as a token type) represents a class of syntactically equivalent tokens. You use the symbol in grammar rules to mean that a token in that class is allowed. The symbol is represented in the Bison parser by a numeric code, and the yylex function returns a token type code to indicate what kind of token has been read. You don't need to know what the code value is; you can use the symbol to stand for it.
-
-A nonterminal symbol stands for a class of syntactically equivalent groupings. The symbol name is used in writing grammar rules. By convention, it should be all lower case. 
-
-/*  A Bison grammar rule has the following general form:
-
-result: components...
-        ;
-
-where result is the nonterminal symbol that this rule describes and components are various terminal and nonterminal symbols that are put together by this rule.
-
-For example,
-
-exp:      exp '+' exp
-        ;
-
-says that two groupings of type exp, with a `+' token in between, can be combined into a larger grouping of type exp.
-
-Whitespace in rules is significant only to separate symbols. You can add extra whitespace as you wish.
-
-Multiple rules for the same result can be written separately or can be joined with the vertical-bar character `|' as follows:
-
-result:    rule1-components...
-        | rule2-components...
-        ...
-        ;
-				
-(http://dinosaur.compilertools.net/bison/bison_6.html)				
-*/
 %%
 program_input:
 	| program_input line
@@ -141,7 +103,6 @@ function:
 		| trig_function
 		| hyperbolic_function
 		|	SQRT expr      		{ $$ = sqrt($2); }
-		| expr FACTORIAL		{ $$ = factorial($1); }
 		| ABS expr 					{ $$ = abs($2); }
 		| FLOOR expr 				{ $$ = floor($2); }
 		| CEIL expr 				{ $$ = ceil($2); }
@@ -191,7 +152,7 @@ assignment:
 /* Entry point */
 int main(int argc, char **argv)
 {
-	char* c;
+	char c[256];
 	printf("Command line or File? (Enter C or F): ");
 	scanf("%s", c);
 	
