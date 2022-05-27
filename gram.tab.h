@@ -49,32 +49,14 @@
      EQUALS = 265,
      PI = 266,
      POW = 267,
-     SQRT = 268,
-     MOD = 269,
-     LOG2 = 270,
-     LOG10 = 271,
-     FLOOR = 272,
-     CEIL = 273,
-     ABS = 274,
-     GBP_TO_USD = 275,
-     USD_TO_GBP = 276,
-     GBP_TO_EURO = 277,
-     EURO_TO_GBP = 278,
-     USD_TO_EURO = 279,
-     EURO_TO_USD = 280,
-     COS = 281,
-     SIN = 282,
-     TAN = 283,
-     COSH = 284,
-     SINH = 285,
-     TANH = 286,
-     CEL_TO_FAH = 287,
-     FAH_TO_CEL = 288,
-     M_TO_KM = 289,
-     KM_TO_M = 290,
-     VAR_KEYWORD = 291,
-     VARIABLE = 292,
-     EOL = 293
+     MOD = 268,
+     LN = 269,
+     COS = 270,
+     SIN = 271,
+     TAN = 272,
+     VAR_KEYWORD = 273,
+     VARIABLE = 274,
+     EOL = 275
    };
 #endif
 
@@ -93,7 +75,7 @@ typedef union YYSTYPE
 
 
 /* Line 1676 of yacc.c  */
-#line 97 "gram.tab.h"
+#line 79 "gram.tab.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
