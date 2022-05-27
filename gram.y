@@ -30,7 +30,7 @@ extern FILE* yyin;
 %token<num> LN EXP
 %token<num> COS SIN TAN COT
 %token<index> VARIABLE
-%token<num> EOL
+%token<num> NEW_LINE
 %type<num> program_input
 %type<num> line
 %type<num> calculation
@@ -40,8 +40,6 @@ extern FILE* yyin;
 %type<num> trig_function
 %type<num> assignment
 
-
-/* Set operator precedence, follows BODMAS rules. */
 %left SUB 
 %left ADD
 %left MUL 
@@ -56,8 +54,8 @@ program_input:
 	;
 	
 line: 
-			EOL 						 { printf("Please enter a calculation:\n"); }
-		| calculation EOL  { printf("=%.2f\n",$1); }
+			NEW_LINE 						 { printf("Please enter a calculation:\n"); }
+		| calculation NEW_LINE  { printf("=%.2f\n",$1); }
     ;
 
 calculation:

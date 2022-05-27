@@ -24,9 +24,9 @@
 ("sin")|("SIN")												{ return SIN; }
 ("tan")|("TAN")												{ return TAN; }
 ("cot")|("COT")												{ return COT; }
-("ln")|("LN")													{ return LN; }
+("ln")|("Ln")													{ return LN; }
 ("exp")|("EXP")												{ return EXP; }
 [a-zA-Z0-9]+  												{ yylval.index = add_variable(yytext); return VARIABLE; }
-[\n]                        					{ return EOL; }
+[\n]                        					{ return NEW_LINE; }
 . 																		{ yyerror("Undefined symbol"); exit(1); } 
 %%

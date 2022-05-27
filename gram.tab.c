@@ -132,7 +132,7 @@ extern FILE* yyin;
      TAN = 272,
      COT = 273,
      VARIABLE = 274,
-     EOL = 275
+     NEW_LINE = 275
    };
 #endif
 
@@ -456,9 +456,9 @@ static const yytype_int8 yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    54,    54,    55,    59,    60,    64,    65,    66,    70,
-      71,    72,    73,    74,    75,    76,    77,    78,    79,    80,
-      84,    85,    89,    90,    91,    92,    96,    97,   102
+       0,    52,    52,    53,    57,    58,    62,    63,    64,    68,
+      69,    70,    71,    72,    73,    74,    75,    76,    77,    78,
+      82,    83,    87,    88,    89,    90,    94,    95,   100
 };
 #endif
 
@@ -469,7 +469,7 @@ static const char *const yytname[] =
 {
   "$end", "error", "$undefined", "NUMBER", "L_BRACKET", "R_BRACKET",
   "DIV", "MUL", "ADD", "SUB", "EQUALS", "POW", "MOD", "LN", "EXP", "COS",
-  "SIN", "TAN", "COT", "VARIABLE", "EOL", "$accept", "program_input",
+  "SIN", "TAN", "COT", "VARIABLE", "NEW_LINE", "$accept", "program_input",
   "line", "calculation", "expr", "function", "trig_function",
   "log_function", "assignment", 0
 };
@@ -1391,133 +1391,133 @@ yyreduce:
         case 4:
 
 /* Line 1455 of yacc.c  */
-#line 59 "gram.y"
+#line 57 "gram.y"
     { printf("Please enter a calculation:\n"); ;}
     break;
 
   case 5:
 
 /* Line 1455 of yacc.c  */
-#line 60 "gram.y"
+#line 58 "gram.y"
     { printf("=%.2f\n",(yyvsp[(1) - (2)].num)); ;}
     break;
 
   case 9:
 
 /* Line 1455 of yacc.c  */
-#line 70 "gram.y"
+#line 68 "gram.y"
     { (yyval.num) = -(yyvsp[(2) - (2)].num); ;}
     break;
 
   case 10:
 
 /* Line 1455 of yacc.c  */
-#line 71 "gram.y"
+#line 69 "gram.y"
     { (yyval.num) = (yyvsp[(1) - (1)].num); ;}
     break;
 
   case 11:
 
 /* Line 1455 of yacc.c  */
-#line 72 "gram.y"
+#line 70 "gram.y"
     { (yyval.num) = variable_values[(yyvsp[(1) - (1)].index)]; ;}
     break;
 
   case 13:
 
 /* Line 1455 of yacc.c  */
-#line 74 "gram.y"
+#line 72 "gram.y"
     { if ((yyvsp[(3) - (3)].num) == 0) { yyerror("Cannot divide by zero"); exit(1); } else (yyval.num) = (yyvsp[(1) - (3)].num) / (yyvsp[(3) - (3)].num); ;}
     break;
 
   case 14:
 
 /* Line 1455 of yacc.c  */
-#line 75 "gram.y"
+#line 73 "gram.y"
     { (yyval.num) = (yyvsp[(1) - (3)].num) * (yyvsp[(3) - (3)].num); ;}
     break;
 
   case 15:
 
 /* Line 1455 of yacc.c  */
-#line 76 "gram.y"
+#line 74 "gram.y"
     { (yyval.num) = (yyvsp[(2) - (3)].num); ;}
     break;
 
   case 16:
 
 /* Line 1455 of yacc.c  */
-#line 77 "gram.y"
+#line 75 "gram.y"
     { (yyval.num) = (yyvsp[(1) - (3)].num) + (yyvsp[(3) - (3)].num); ;}
     break;
 
   case 17:
 
 /* Line 1455 of yacc.c  */
-#line 78 "gram.y"
+#line 76 "gram.y"
     { (yyval.num) = (yyvsp[(1) - (3)].num) - (yyvsp[(3) - (3)].num); ;}
     break;
 
   case 18:
 
 /* Line 1455 of yacc.c  */
-#line 79 "gram.y"
+#line 77 "gram.y"
     { (yyval.num) = pow((yyvsp[(1) - (3)].num), (yyvsp[(3) - (3)].num)); ;}
     break;
 
   case 19:
 
 /* Line 1455 of yacc.c  */
-#line 80 "gram.y"
+#line 78 "gram.y"
     { (yyval.num) = modulo((yyvsp[(1) - (3)].num), (yyvsp[(3) - (3)].num)); ;}
     break;
 
   case 22:
 
 /* Line 1455 of yacc.c  */
-#line 89 "gram.y"
+#line 87 "gram.y"
     { (yyval.num) = cos((yyvsp[(2) - (2)].num)); ;}
     break;
 
   case 23:
 
 /* Line 1455 of yacc.c  */
-#line 90 "gram.y"
+#line 88 "gram.y"
     { (yyval.num) = sin((yyvsp[(2) - (2)].num)); ;}
     break;
 
   case 24:
 
 /* Line 1455 of yacc.c  */
-#line 91 "gram.y"
+#line 89 "gram.y"
     { (yyval.num) = tan((yyvsp[(2) - (2)].num)); ;}
     break;
 
   case 25:
 
 /* Line 1455 of yacc.c  */
-#line 92 "gram.y"
+#line 90 "gram.y"
     { (yyval.num) = 1 / tan((yyvsp[(2) - (2)].num)); ;}
     break;
 
   case 26:
 
 /* Line 1455 of yacc.c  */
-#line 96 "gram.y"
+#line 94 "gram.y"
     { (yyval.num) = log((yyvsp[(2) - (2)].num)); ;}
     break;
 
   case 27:
 
 /* Line 1455 of yacc.c  */
-#line 97 "gram.y"
+#line 95 "gram.y"
     {(yyval.num) = exp((yyvsp[(2) - (2)].num)); ;}
     break;
 
   case 28:
 
 /* Line 1455 of yacc.c  */
-#line 102 "gram.y"
+#line 100 "gram.y"
     { (yyval.num) = set_variable((yyvsp[(1) - (3)].index), (yyvsp[(3) - (3)].num)); ;}
     break;
 
@@ -1736,7 +1736,7 @@ yyreturn:
 
 
 /* Line 1675 of yacc.c  */
-#line 104 "gram.y"
+#line 102 "gram.y"
 
 
 int main(int argc, char **argv)

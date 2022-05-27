@@ -56,7 +56,7 @@
      TAN = 272,
      COT = 273,
      VARIABLE = 274,
-     EOL = 275
+     NEW_LINE = 275
    };
 #endif
 
